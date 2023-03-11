@@ -20,12 +20,11 @@ yarn add
 <!-- Start SDK Example Usage -->
 ```typescript
 import {
-  CreatePetsResponse 
+  CreatePetsResponse
 } from "/dist/sdk/models/operations";
 
 import { AxiosError } from "axios";
 import { SDK } from "";
-
 
 const sdk = new SDK();
 
