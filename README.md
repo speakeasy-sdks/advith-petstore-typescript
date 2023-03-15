@@ -25,7 +25,6 @@ import {
 
 import { AxiosError } from "axios";
 import { SDK } from "";
-
 const sdk = new SDK();
 
 sdk.pets.createPets().then((res: CreatePetsResponse | AxiosError) => {

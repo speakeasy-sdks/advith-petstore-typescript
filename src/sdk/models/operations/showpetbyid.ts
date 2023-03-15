@@ -3,9 +3,10 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-
 export class ShowPetByIdPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=petId" })
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=petId",
+  })
   petId: string;
 }
 

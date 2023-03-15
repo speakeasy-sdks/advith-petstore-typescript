@@ -12,7 +12,14 @@ export class Pets {
   _sdkVersion: string;
   _genVersion: string;
 
-  constructor(defaultClient: AxiosInstance, securityClient: AxiosInstance, serverURL: string, language: string, sdkVersion: string, genVersion: string) {
+  constructor(
+    defaultClient: AxiosInstance,
+    securityClient: AxiosInstance,
+    serverURL: string,
+    language: string,
+    sdkVersion: string,
+    genVersion: string
+  ) {
     this._defaultClient = defaultClient;
     this._securityClient = securityClient;
     this._serverURL = serverURL;
@@ -20,56 +27,55 @@ export class Pets {
     this._sdkVersion = sdkVersion;
     this._genVersion = genVersion;
   }
-  
+
   /**
    * createPets - Create a pet
-  **/
+   **/
   createPets(
     config?: AxiosRequestConfig
   ): Promise<operations.CreatePetsResponse> {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/pets";
-    
+
     const client: AxiosInstance = this._defaultClient!;
-    
-    
+
     const r = client.request({
       url: url,
       method: "post",
       ...config,
     });
-    
+
     return r.then((httpRes: AxiosResponse) => {
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreatePetsResponse =
-            new operations.CreatePetsResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes
-            });
-        switch (true) {
-          case httpRes?.status == 201:
-            break;
-          default:
-            if (utils.matchContentType(contentType, `application/json`)) {
-              res.error = utils.deserializeJSONResponse(
-                httpRes?.data,
-                shared.ErrorT,
-              );
-            }
-            break;
-        }
+      if (httpRes?.status == null)
+        throw new Error(`status code not found in response: ${httpRes}`);
+      const res: operations.CreatePetsResponse =
+        new operations.CreatePetsResponse({
+          statusCode: httpRes.status,
+          contentType: contentType,
+          rawResponse: httpRes,
+        });
+      switch (true) {
+        case httpRes?.status == 201:
+          break;
+        default:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.error = utils.deserializeJSONResponse(
+              httpRes?.data,
+              shared.ErrorT
+            );
+          }
+          break;
+      }
 
-        return res;
-      })
+      return res;
+    });
   }
 
-  
   /**
    * listPets - List all pets
-  **/
+   **/
   listPets(
     req: operations.ListPetsRequest,
     config?: AxiosRequestConfig
@@ -77,60 +83,59 @@ export class Pets {
     if (!(req instanceof utils.SpeakeasyBase)) {
       req = new operations.ListPetsRequest(req);
     }
-    
+
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/pets";
-    
+
     const client: AxiosInstance = this._defaultClient!;
-    
+
     const queryParams: string = utils.serializeQueryParams(req.queryParams);
-    
+
     const r = client.request({
       url: url + queryParams,
       method: "get",
       ...config,
     });
-    
+
     return r.then((httpRes: AxiosResponse) => {
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ListPetsResponse =
-            new operations.ListPetsResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes
-            });
-        switch (true) {
-          case httpRes?.status == 200:
-            if (utils.matchContentType(contentType, `application/json`)) {
-              res.pets = [];
-              const resFieldDepth: number = utils.getResFieldDepth(res);
-              res.pets = utils.deserializeJSONResponse(
-                httpRes?.data,
-                shared.Pet,
-                resFieldDepth
-              );
-            }
-            break;
-          default:
-            if (utils.matchContentType(contentType, `application/json`)) {
-              res.error = utils.deserializeJSONResponse(
-                httpRes?.data,
-                shared.ErrorT,
-              );
-            }
-            break;
-        }
+      if (httpRes?.status == null)
+        throw new Error(`status code not found in response: ${httpRes}`);
+      const res: operations.ListPetsResponse = new operations.ListPetsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+      switch (true) {
+        case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.pets = [];
+            const resFieldDepth: number = utils.getResFieldDepth(res);
+            res.pets = utils.deserializeJSONResponse(
+              httpRes?.data,
+              shared.Pet,
+              resFieldDepth
+            );
+          }
+          break;
+        default:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.error = utils.deserializeJSONResponse(
+              httpRes?.data,
+              shared.ErrorT
+            );
+          }
+          break;
+      }
 
-        return res;
-      })
+      return res;
+    });
   }
 
-  
   /**
    * showPetById - Info for a specific pet
-  **/
+   **/
   showPetById(
     req: operations.ShowPetByIdRequest,
     config?: AxiosRequestConfig
@@ -138,50 +143,50 @@ export class Pets {
     if (!(req instanceof utils.SpeakeasyBase)) {
       req = new operations.ShowPetByIdRequest(req);
     }
-    
+
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(baseURL, "/pets/{petId}", req.pathParams);
-    
+    const url: string = utils.generateURL(
+      baseURL,
+      "/pets/{petId}",
+      req.pathParams
+    );
+
     const client: AxiosInstance = this._defaultClient!;
-    
-    
+
     const r = client.request({
       url: url,
       method: "get",
       ...config,
     });
-    
+
     return r.then((httpRes: AxiosResponse) => {
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.ShowPetByIdResponse =
-            new operations.ShowPetByIdResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes
-            });
-        switch (true) {
-          case httpRes?.status == 200:
-            if (utils.matchContentType(contentType, `application/json`)) {
-              res.pet = utils.deserializeJSONResponse(
-                httpRes?.data,
-                shared.Pet,
-              );
-            }
-            break;
-          default:
-            if (utils.matchContentType(contentType, `application/json`)) {
-              res.error = utils.deserializeJSONResponse(
-                httpRes?.data,
-                shared.ErrorT,
-              );
-            }
-            break;
-        }
+      if (httpRes?.status == null)
+        throw new Error(`status code not found in response: ${httpRes}`);
+      const res: operations.ShowPetByIdResponse =
+        new operations.ShowPetByIdResponse({
+          statusCode: httpRes.status,
+          contentType: contentType,
+          rawResponse: httpRes,
+        });
+      switch (true) {
+        case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.pet = utils.deserializeJSONResponse(httpRes?.data, shared.Pet);
+          }
+          break;
+        default:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.error = utils.deserializeJSONResponse(
+              httpRes?.data,
+              shared.ErrorT
+            );
+          }
+          break;
+      }
 
-        return res;
-      })
+      return res;
+    });
   }
-
 }
