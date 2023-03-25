@@ -40,7 +40,7 @@ export class Pets {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/pets";
 
-    const client: AxiosInstance = this._defaultClient!;
+    const client: AxiosInstance = this._defaultClient;
 
     const r = client.request({
       url: url,
@@ -90,7 +90,7 @@ export class Pets {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/pets";
 
-    const client: AxiosInstance = this._defaultClient!;
+    const client: AxiosInstance = this._defaultClient;
 
     const queryParams: string = utils.serializeQueryParams(req.queryParams);
 
@@ -154,7 +154,7 @@ export class Pets {
       req.pathParams
     );
 
-    const client: AxiosInstance = this._defaultClient!;
+    const client: AxiosInstance = this._defaultClient;
 
     const r = client.request({
       url: url,

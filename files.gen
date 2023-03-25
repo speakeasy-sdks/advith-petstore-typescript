@@ -1,5 +1,6 @@
 src/sdk/pets.ts
 src/sdk/sdk.ts
+.eslintrc.yml
 jest.config.js
 package-lock.json
 package.json
