@@ -6,17 +6,12 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class ListPetsQueryParams extends SpeakeasyBase {
+export class ListPetsRequest extends SpeakeasyBase {
   /**
    * How many items to return at one time (max 100)
    */
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
   limit?: number;
-}
-
-export class ListPetsRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  queryParams: ListPetsQueryParams;
 }
 
 export class ListPetsResponse extends SpeakeasyBase {

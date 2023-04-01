@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class ShowPetByIdPathParams extends SpeakeasyBase {
+export class ShowPetByIdRequest extends SpeakeasyBase {
   /**
    * The id of the pet to retrieve
    */
@@ -14,11 +14,6 @@ export class ShowPetByIdPathParams extends SpeakeasyBase {
     data: "pathParam, style=simple;explode=false;name=petId",
   })
   petId: string;
-}
-
-export class ShowPetByIdRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: ShowPetByIdPathParams;
 }
 
 export class ShowPetByIdResponse extends SpeakeasyBase {

@@ -34,7 +34,7 @@ sdk.pets.createPets().then((res: CreatePetsResponse | AxiosError) => {
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
 ### pets

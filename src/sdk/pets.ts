@@ -92,7 +92,7 @@ export class Pets {
 
     const client: AxiosInstance = this._defaultClient;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,
@@ -148,11 +148,7 @@ export class Pets {
     }
 
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/pets/{petId}",
-      req.pathParams
-    );
+    const url: string = utils.generateURL(baseURL, "/pets/{petId}", req);
 
     const client: AxiosInstance = this._defaultClient;
 
