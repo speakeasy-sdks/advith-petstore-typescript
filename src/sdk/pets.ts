@@ -64,10 +64,7 @@ export class Pets {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.deserializeJSONResponse(
-              httpRes?.data,
-              shared.ErrorT
-            );
+            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
           }
           break;
       }
@@ -115,7 +112,7 @@ export class Pets {
           if (utils.matchContentType(contentType, `application/json`)) {
             res.pets = [];
             const resFieldDepth: number = utils.getResFieldDepth(res);
-            res.pets = utils.deserializeJSONResponse(
+            res.pets = utils.objectToClass(
               httpRes?.data,
               shared.Pet,
               resFieldDepth
@@ -124,10 +121,7 @@ export class Pets {
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.deserializeJSONResponse(
-              httpRes?.data,
-              shared.ErrorT
-            );
+            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
           }
           break;
       }
@@ -172,15 +166,12 @@ export class Pets {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.pet = utils.deserializeJSONResponse(httpRes?.data, shared.Pet);
+            res.pet = utils.objectToClass(httpRes?.data, shared.Pet);
           }
           break;
         default:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.deserializeJSONResponse(
-              httpRes?.data,
-              shared.ErrorT
-            );
+            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
           }
           break;
       }
