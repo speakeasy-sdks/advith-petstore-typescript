@@ -25,4 +25,6 @@ src/sdk/models/operations/index.ts
 src/sdk/models/shared/error.ts
 src/sdk/models/shared/pet.ts
 src/sdk/models/shared/index.ts
+docs/sdk/README.md
+docs/pets/README.md
 USAGE.md
