@@ -15,12 +15,11 @@ Create a pet
 ```typescript
 import { SDK } from "";
 import { CreatePetsResponse } from "/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new SDK();
 
-sdk.pets.createPets().then((res: CreatePetsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.pets.createPets().then((res: CreatePetsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -34,17 +33,14 @@ List all pets
 
 ```typescript
 import { SDK } from "";
-import { ListPetsRequest, ListPetsResponse } from "/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { ListPetsResponse } from "/dist/sdk/models/operations";
 
 const sdk = new SDK();
 
-const req: ListPetsRequest = {
+sdk.pets.listPets({
   limit: 548814,
-};
-
-sdk.pets.listPets(req).then((res: ListPetsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ListPetsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -58,17 +54,14 @@ Info for a specific pet
 
 ```typescript
 import { SDK } from "";
-import { ShowPetByIdRequest, ShowPetByIdResponse } from "/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { ShowPetByIdResponse } from "/dist/sdk/models/operations";
 
 const sdk = new SDK();
 
-const req: ShowPetByIdRequest = {
+sdk.pets.showPetById({
   petId: "provident",
-};
-
-sdk.pets.showPetById(req).then((res: ShowPetByIdResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ShowPetByIdResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
