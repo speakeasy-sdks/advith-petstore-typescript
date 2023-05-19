@@ -24,6 +24,9 @@ export class ListPetsResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   error?: shared.ErrorT;
 
+  @SpeakeasyMetadata()
+  headers?: Record<string, string[]>;
+
   /**
    * A paged array of pets
    */

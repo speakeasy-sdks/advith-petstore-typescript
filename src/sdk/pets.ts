@@ -43,6 +43,7 @@ export class Pets {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -98,6 +99,7 @@ export class Pets {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -120,6 +122,7 @@ export class Pets {
       statusCode: httpRes.status,
       contentType: contentType,
       rawResponse: httpRes,
+      headers: utils.getHeadersFromResponse(httpRes.headers),
     });
     switch (true) {
       case httpRes?.status == 200:
@@ -160,6 +163,7 @@ export class Pets {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;

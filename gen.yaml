@@ -2,11 +2,11 @@ configVersion: 1.0.0
 management:
     docChecksum: 2516596125ef223fbbef6c434d22eaac
     docVersion: 1.0.0
-    speakeasyVersion: 1.34.0
+    speakeasyVersion: 1.35.0
 generation:
     telemetryEnabled: false
     sdkClassName: SDK
 typescript:
-    version: 0.25.0
+    version: 0.26.0
     author: Speakeasy
     packageName: ""
